@@ -27,6 +27,11 @@ public abstract class ScratchMap<Key, Value> {
      * @return - Returns the value if present else return the provided value
      */
     abstract Value getOrDefault(Key key, Value value);
+
+    /**
+     * Get the size of map
+     * @return - Return the count of elements in the map
+     */
     abstract int size();
 
     /**
@@ -35,4 +40,6 @@ public abstract class ScratchMap<Key, Value> {
      * @return - boolean based on key is present (true) or not (false)
      */
     abstract boolean has(Key key);
+
+    abstract Value remove(Key key) throws KeyNotFoundException;
 }

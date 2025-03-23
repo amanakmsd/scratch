@@ -43,5 +43,17 @@ public class ScratchMapMain {
         count = scratchMap.size();
         System.out.println("Size: "+count);
 
+        String removal = scratchMap.remove("Aman");
+        System.out.println(removal);
+        try {
+            removal = scratchMap.remove("Aman");
+            System.out.println(removal);
+        } catch (KeyNotFoundException e) {
+            System.out.println("Removal failed");
+        }
+        count = scratchMap.size();
+        System.out.println("Size: "+count);
+
+
     }
 }

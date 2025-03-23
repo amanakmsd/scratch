@@ -78,4 +78,32 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
             return false;
         }
     }
+
+    @Override
+    Value remove(Key key) throws KeyNotFoundException {
+        int position = key.hashCode() % this.size;
+        HashScratchMapNode<Key,Value> head = nodes[position];
+        if (head == null)
+            throw new KeyNotFoundException();
+        HashScratchMapNode<Key,Value> prev = null;
+        HashScratchMapNode<Key,Value> cur = head;
+        if(cur.getKey().equals(key)) {
+            Value value = cur.getValue();
+            this.elementsCount--;
+            nodes[position] = cur.getNext();
+            return value;
+        }
+
+        while (cur!= null) {
+            if(cur.getKey().equals(key)) {
+                prev.setNext(cur.getNext());
+                this.elementsCount--;
+                return cur.getValue();
+            }
+            prev = cur;
+            cur = cur.getNext();
+        }
+        throw new KeyNotFoundException();
+
+    }
 }
