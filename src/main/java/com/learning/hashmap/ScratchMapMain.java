@@ -7,12 +7,18 @@ public class ScratchMapMain {
     public static void main(String[] args) throws KeyNotFoundException {
         ScratchMap<String, String> scratchMap = new HashScratchMap<>();
         boolean putResp = scratchMap.put("Aman", "Hi Aman !");
+        int count = scratchMap.size();
+        System.out.println("Size: "+count);
         System.out.println(putResp);
         putResp = scratchMap.put("Amab", "Hi Amab!");
+        count = scratchMap.size();
+        System.out.println("Size: "+count);
         System.out.println(putResp);
         String output = scratchMap.get("Aman");
         System.out.println(output);
         putResp = scratchMap.put("Aman", "Hi Aman Singh !");
+        count = scratchMap.size();
+        System.out.println("Size: "+count);
         System.out.println(putResp);
         output = scratchMap.get("Aman");
         System.out.println(output);
@@ -34,6 +40,8 @@ public class ScratchMapMain {
 
         isPresent = scratchMap.has("Aman111");
         System.out.println(isPresent);
+        count = scratchMap.size();
+        System.out.println("Size: "+count);
 
     }
 }

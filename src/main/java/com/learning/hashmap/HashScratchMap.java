@@ -7,10 +7,12 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
     public static final Integer HASH_MAP_CODE_COUNT = 16;
 
     int size;
+    int elementsCount;
     HashScratchMapNode<Key, Value>[] nodes;
 
     HashScratchMap() {
         this.size = HASH_MAP_CODE_COUNT;
+        this.elementsCount = 0;
         nodes = new HashScratchMapNode[HASH_MAP_CODE_COUNT];
         for (int i = 0; i < size; i++) {
             nodes[i] = null;
@@ -34,6 +36,7 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
             node.setNext(nodes[position]);
         }
         nodes[position] = node;
+        this.elementsCount++;
         return false;
     }
 
@@ -59,6 +62,11 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
         } catch (KeyNotFoundException e) {
             return value;
         }
+    }
+
+    @Override
+    int size() {
+        return this.elementsCount;
     }
 
     @Override

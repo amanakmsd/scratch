@@ -27,7 +27,7 @@ public abstract class ScratchMap<Key, Value> {
      * @return - Returns the value if present else return the provided value
      */
     abstract Value getOrDefault(Key key, Value value);
-//    abstract int size();
+    abstract int size();
 
     /**
      * Checks if key is present in the provided map
