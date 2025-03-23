@@ -41,5 +41,11 @@ public abstract class ScratchMap<Key, Value> {
      */
     abstract boolean has(Key key);
 
+    /**
+     * Remove the key, value from map
+     * @param key - Specific key to be removed
+     * @return = Return the value associated with key
+     * @throws KeyNotFoundException - Throws if key is not present
+     */
     abstract Value remove(Key key) throws KeyNotFoundException;
 }
