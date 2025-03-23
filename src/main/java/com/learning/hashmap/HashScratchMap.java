@@ -18,7 +18,7 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
     }
 
     @Override
-    void put(Key key, Value value) {
+    boolean put(Key key, Value value) {
         int hashCode = key.hashCode();
         int position = hashCode % size;
         HashScratchMapNode<Key, Value> node = new HashScratchMapNode<>(key, value);
@@ -27,13 +27,14 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
             while (curHead!= null) {
                 if(curHead.getKey().equals(key)) {
                     curHead.setValue(value);
-                    return;
+                    return true;
                 }
                 curHead = curHead.getNext();
             }
             node.setNext(nodes[position]);
         }
         nodes[position] = node;
+        return false;
     }
 
     @Override
@@ -49,5 +50,14 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
             cur = cur.getNext();
         }
         throw new KeyNotFoundException();
+    }
+
+    @Override
+    Value getOrDefault(Key key, Value value) {
+        try {
+            return this.get(key);
+        } catch (KeyNotFoundException e) {
+            return value;
+        }
     }
 }
