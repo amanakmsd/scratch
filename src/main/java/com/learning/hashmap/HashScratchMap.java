@@ -10,7 +10,7 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
     int elementsCount;
     HashScratchMapNode<Key, Value>[] nodes;
 
-    HashScratchMap() {
+    public HashScratchMap() {
         this.size = HASH_MAP_CODE_COUNT;
         this.elementsCount = 0;
         nodes = new HashScratchMapNode[HASH_MAP_CODE_COUNT];
@@ -20,7 +20,7 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
     }
 
     @Override
-    boolean put(Key key, Value value) {
+    public boolean put(Key key, Value value) {
         int hashCode = key.hashCode();
         int position = hashCode % size;
         HashScratchMapNode<Key, Value> node = new HashScratchMapNode<>(key, value);
@@ -41,7 +41,7 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
     }
 
     @Override
-    Value get(Key key) throws KeyNotFoundException {
+    public Value get(Key key) throws KeyNotFoundException {
         int hashCode = key.hashCode();
         int position = hashCode % size;
         if(nodes[position] == null)
@@ -56,7 +56,7 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
     }
 
     @Override
-    Value getOrDefault(Key key, Value value) {
+    public Value getOrDefault(Key key, Value value) {
         try {
             return this.get(key);
         } catch (KeyNotFoundException e) {
@@ -65,12 +65,12 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
     }
 
     @Override
-    int size() {
+    public int size() {
         return this.elementsCount;
     }
 
     @Override
-    boolean has(Key key) {
+    public boolean has(Key key) {
         try {
             this.get(key);
             return true;
@@ -80,7 +80,7 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
     }
 
     @Override
-    Value remove(Key key) throws KeyNotFoundException {
+    public Value remove(Key key) throws KeyNotFoundException {
         int position = key.hashCode() % this.size;
         HashScratchMapNode<Key,Value> head = nodes[position];
         if (head == null)

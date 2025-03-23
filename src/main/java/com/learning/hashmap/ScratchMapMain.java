@@ -1,6 +1,7 @@
 package com.learning.hashmap;
 
 import com.learning.hashmap.exception.KeyNotFoundException;
+import com.learning.hashmap.test.HashScratchMapTest;
 
 public class ScratchMapMain {
 
@@ -53,6 +54,10 @@ public class ScratchMapMain {
         }
         count = scratchMap.size();
         System.out.println("Size: "+count);
+
+        HashScratchMapTest hashScratchMapTest = new HashScratchMapTest();
+        hashScratchMapTest.getCheck();
+        hashScratchMapTest.removeCheck();
 
 
     }

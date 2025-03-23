@@ -9,7 +9,7 @@ public abstract class ScratchMap<Key, Value> {
      * @param value - Value associated with key
      * @return - boolean true --> if key is already present and is updated. false --> if it is new key
      */
-    abstract boolean put(Key key, Value value);
+    public abstract boolean put(Key key, Value value);
 
     /**
      * Gets the value from map
@@ -17,7 +17,7 @@ public abstract class ScratchMap<Key, Value> {
      * @return - Returns the value
      * @throws KeyNotFoundException - If value is not present, throw me.
      */
-    abstract Value get(Key key) throws KeyNotFoundException;
+    public abstract Value get(Key key) throws KeyNotFoundException;
 
     /**
      *
@@ -26,20 +26,20 @@ public abstract class ScratchMap<Key, Value> {
      * @param value - default value
      * @return - Returns the value if present else return the provided value
      */
-    abstract Value getOrDefault(Key key, Value value);
+    public abstract Value getOrDefault(Key key, Value value);
 
     /**
      * Get the size of map
      * @return - Return the count of elements in the map
      */
-    abstract int size();
+    public abstract int size();
 
     /**
      * Checks if key is present in the provided map
      * @param key - Check for this key
      * @return - boolean based on key is present (true) or not (false)
      */
-    abstract boolean has(Key key);
+    public abstract boolean has(Key key);
 
     /**
      * Remove the key, value from map
@@ -47,5 +47,5 @@ public abstract class ScratchMap<Key, Value> {
      * @return = Return the value associated with key
      * @throws KeyNotFoundException - Throws if key is not present
      */
-    abstract Value remove(Key key) throws KeyNotFoundException;
+    public abstract Value remove(Key key) throws KeyNotFoundException;
 }
