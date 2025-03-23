@@ -28,5 +28,12 @@ public class ScratchMapMain {
 
         output = scratchMap.getOrDefault("Aman", "sdsfdfg");
         System.out.println(output);
+
+        boolean isPresent = scratchMap.has("Aman");
+        System.out.println(isPresent);
+
+        isPresent = scratchMap.has("Aman111");
+        System.out.println(isPresent);
+
     }
 }

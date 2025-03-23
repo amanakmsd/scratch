@@ -28,5 +28,11 @@ public abstract class ScratchMap<Key, Value> {
      */
     abstract Value getOrDefault(Key key, Value value);
 //    abstract int size();
-//    abstract boolean has(Key key);
+
+    /**
+     * Checks if key is present in the provided map
+     * @param key - Check for this key
+     * @return - boolean based on key is present (true) or not (false)
+     */
+    abstract boolean has(Key key);
 }

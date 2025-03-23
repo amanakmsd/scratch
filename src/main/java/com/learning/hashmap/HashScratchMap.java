@@ -60,4 +60,14 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
             return value;
         }
     }
+
+    @Override
+    boolean has(Key key) {
+        try {
+            this.get(key);
+            return true;
+        } catch (KeyNotFoundException e) {
+            return false;
+        }
+    }
 }
