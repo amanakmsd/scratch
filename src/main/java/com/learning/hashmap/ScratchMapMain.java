@@ -18,6 +18,7 @@ public class ScratchMapMain {
         System.out.println(output);
         try {
             output = scratchMap.get("Ahha");
+            System.out.println(output);
         } catch (KeyNotFoundException e) {
             System.out.println("Key not found");
         }
@@ -25,5 +26,7 @@ public class ScratchMapMain {
         output = scratchMap.getOrDefault("Ahhaa", "Vallah");
         System.out.println(output);
 
+        output = scratchMap.getOrDefault("Aman", "sdsfdfg");
+        System.out.println(output);
     }
 }
