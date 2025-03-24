@@ -1,6 +1,10 @@
 package com.learning.hashmap;
 
 import com.learning.hashmap.exception.KeyNotFoundException;
+import com.learning.hashmap.test.HashScratchMapTest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
 
@@ -8,12 +12,14 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
 
     int size;
     int elementsCount;
+    double loadFactor;
     HashScratchMapNode<Key, Value>[] nodes;
 
     public HashScratchMap() {
         this.size = HASH_MAP_CODE_COUNT;
         this.elementsCount = 0;
         nodes = new HashScratchMapNode[HASH_MAP_CODE_COUNT];
+        loadFactor = 0.75;
         for (int i = 0; i < size; i++) {
             nodes[i] = null;
         }
@@ -37,7 +43,27 @@ public class HashScratchMap<Key, Value> extends ScratchMap<Key, Value> {
         }
         nodes[position] = node;
         this.elementsCount++;
+        if((double) this.elementsCount / this.size > this.loadFactor) {
+            reIndex();
+        }
         return false;
+    }
+
+    private void reIndex() {
+        List<HashScratchMapNode<Key, Value>> nodeList = new ArrayList<>();
+        for(int i=0;i<this.size;i++) {
+            HashScratchMapNode<Key, Value> cur = nodes[i];
+            while (cur!= null) {
+                nodeList.add(cur);
+                cur = cur.getNext();
+            }
+        }
+        this.size *= 4;
+        this.nodes = new HashScratchMapNode[this.size];
+        this.elementsCount = 0;
+        for(HashScratchMapNode<Key, Value> node: nodeList) {
+            this.put(node.getKey(), node.getValue());
+        }
     }
 
     @Override
